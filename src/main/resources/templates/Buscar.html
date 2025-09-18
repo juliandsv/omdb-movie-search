@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        text-align: center;
+    }
+
+   
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Estilos para el saludo */
+    .saludo {
+        font-size: 24px; 
+        color: #333; 
+        margin-bottom: 20px; 
+    }
+
+    .formulario-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .formulario-container h1 {
+        margin-bottom: 25px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .formulario-container .input-group {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .formulario-container .input-group label {
+        display: block;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .formulario-container .input-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .formulario-container .input-group input:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+    .formulario-container button {
+        width: 100%;
+        padding: 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+    }
+
+    .formulario-container button:hover {
+        background-color: #45a049;
+    }
+
+    .formulario-container p {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .formulario-container p a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .formulario-container p a:hover {
+        text-decoration: underline;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="contenido">
+       
+        <div th:insert="~{fragmento :: saludo}" class="saludo"></div>
+
+        <div class="formulario-container">
+            <h1>Buscar Película</h1>
+
+            
+            <form action="#" th:action="@{/buscar}" method="post">
+                <div class="input-group">
+                    <label for="titulo">Título de la película:</label>
+                    <input type="text" id="titulo" name="titulo" required />
+                </div>
+                <button type="submit">Buscar</button>
+            </form>
+
+            <form action="/misPeliculas" method="get">
+                <button type="submit">Mis Películas</button>
+            </form>
+
+            <form th:action="@{/peliculasCompartidas}" method="get">
+                <button type="submit" class="boton">Películas Compartidas</button>
+            </form>
+			<form th:action="@{/logout}" method="post">
+			               <button type="submit" class="boton">Cerrar sesión</button>
+			           </form>
+        </div>
+    </div>
+</body>
+</html>

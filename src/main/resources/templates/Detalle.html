@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Película</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+</head>
+<style>
+	body {
+		text-align: center;
+		font-family: 'Arial', sans-serif;
+		background-color: #f4f4f9;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* Contenedor principal */
+	.movie-detail {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 50px;
+		padding: 20px;
+		background-color: white;
+		border-radius: 10px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* Estilo para la imagen de la película */
+	.movie-poster-detail {
+		max-width: 100%;
+		height: auto;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		margin-bottom: 30px;
+		transition: transform 0.3s ease;
+	}
+
+	.movie-poster-detail:hover {
+		transform: scale(1.05);
+	}
+
+	/* Contenedor de la información de la película */
+	.movie-info {
+		text-align: center;
+		color: #333;
+		padding: 0 20px;
+	}
+
+	.movie-title {
+		font-size: 2.5em;
+		font-weight: bold;
+		color: #222;
+		margin: 0;
+		margin-bottom: 10px;
+		text-transform: capitalize;
+	}
+
+	.movie-year {
+		font-size: 1.2em;
+		color: #888;
+		margin-bottom: 15px;
+	}
+
+	.movie-director {
+		font-size: 1.1em;
+		color: #555;
+		margin-bottom: 20px;
+	}
+
+	.movie-runtime {
+		font-size: 1.1em;
+		color: #555;
+		margin-bottom: 15px;
+	}
+
+	.movie-actors {
+		font-size: 1.1em;
+		color: #555;
+		margin-bottom: 30px;
+	}
+
+	/* Botón para volver */
+	.volver-enlace {
+		display: inline-block;
+		padding: 10px 20px;
+		background-color: #5cb85c;
+		color: white;
+		text-decoration: none;
+		font-weight: bold;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+		margin-top: 30px;
+	}
+
+	.volver-enlace:hover {
+		background-color: #4cae4c;
+	}
+
+	/* Mensaje de no resultados */
+	.no-results-message {
+		text-align: center;
+		padding: 20px;
+		background-color: #f8d7da;
+		color: #721c24;
+		border: 1px solid #f5c6cb;
+		border-radius: 5px;
+		margin-top: 30px;
+	}
+</style>
+<body>
+
+    <h1>Detalle de la Película</h1>
+
+    
+    <div th:if="${pelicula == null}" class="no-results-message">
+        <p>No se encontró la película.</p>
+    </div>
+
+   
+		<div class="movie-detail">
+			<h1 class="movie-title" th:text="${pelicula.Title}">Título de la película</h1>
+			<img class="movie-poster-detail" th:src="@{${pelicula.Poster}}" alt="Poster de la película" />	
+			<div class="movie-info">
+				<p><strong>Resumen:</strong> <span th:text="${pelicula.Plot}"></span></p>
+				<p class="movie-year"><strong>Año:</strong> <span th:text="${pelicula.Year}"></span></p>
+				<p class="movie-director"><strong>Director:</strong> <span th:text="${pelicula.director}"></span></p>
+				<p class="movie-runtime"><strong>Duración:</strong> <span th:text="${pelicula.Runtime}"></span></p>
+				<p class="movie-actors"><strong>Actores:</strong> <span th:text="${pelicula.Actors}"></span></p>
+			</div>
+		</div>
+	</div>
+
+   
+    <a href="#" th:href="@{/peliculasCompartidas}" class="volver-enlace">Volver a películas compartidas</a>
+
+</body>
+</html>
+

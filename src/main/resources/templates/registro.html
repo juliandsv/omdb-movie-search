@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+	body {
+	    font-family: 'Arial', sans-serif;
+	    margin: 0;
+	    padding: 0;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 100vh;
+	    background-color: #f7f7f7;
+	}
+
+	.register-container {
+	    background-color: #fff;
+	    padding: 30px;
+	    border-radius: 10px;
+	    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+	    width: 100%;
+	    max-width: 400px;
+	    text-align: center;
+	}
+
+	.register-container h1 {
+	    margin-bottom: 20px;
+	    font-size: 24px;
+	    color: #333;
+	}
+
+	.register-container input {
+	    width: calc(100% - 24px); 
+	    padding: 12px;
+	    margin: 10px auto;
+	    display: block;
+	    border: 1px solid #ddd;
+	    border-radius: 6px;
+	    font-size: 14px;
+	    transition: border-color 0.3s;
+	}
+
+	.register-container input:focus {
+	    border-color: #4CAF50;
+	    outline: none;
+	}
+
+	.register-container button {
+	    width: 100%;
+	    padding: 12px;
+	    background-color: #4CAF50;
+	    color: white;
+	    border: none;
+	    border-radius: 6px;
+	    cursor: pointer;
+	    font-size: 16px;
+	    transition: background-color 0.3s;
+	    margin-top: 15px;
+	}
+
+	.register-container button:hover {
+	    background-color: #45a049;
+	}
+
+	.register-container p {
+	    margin-top: 20px;
+	    font-size: 14px;
+	    color: #666;
+	}
+
+	.register-container p a {
+	    color: #007bff;
+	    text-decoration: none;
+	}
+
+	.register-container p a:hover {
+	    text-decoration: underline;
+	}
+
+	.error {
+	    color: red;
+	    font-size: 14px;
+	    margin-top: 10px;
+	}
+
+</style>
+</head>
+<body>
+	<div class="register-container">
+	    <h1>Registro</h1>
+
+	    <form action="#" th:action="@{/registro}" method="POST">
+	        <input type="text" name="name" placeholder="Nombre" required><br>
+	        <input type="text" name="apellido1" placeholder="Apellido 1" required><br>
+	        <input type="text" name="apellido2" placeholder="Apellido 2" required><br>
+	        <input type="email" name="email" placeholder="Correo electrónico" required><br>
+	        <input type="password" name="password" placeholder="Contraseña"	pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+			 title="La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial"  required><br>
+	        <input type="tel" name="telefono" placeholder="Teléfono" pattern="^\d{9}$" title="El teléfono debe tener 9 cifras"  required><br>
+	        <input type="date" name="fechaNacimiento" required><br> 
+	        <button type="submit">Registrar</button>
+	    </form>
+
+	    <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a></p>
+
+	    <p class="error">{{error}}</p>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Película</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        /* Contenedor principal de la película */
+        .movie-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 20%;
+            margin: 20px auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .movie-poster {
+            width: 150px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .movie-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .movie-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .movie-year {
+            font-size: 1.1em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .movie-director {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .user-list {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .user-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .user-list th, .user-list td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .user-list th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .user-list td {
+            background-color: #fff;
+        }
+
+        .boton {
+            background-color: black;
+            color: #f4f4f4;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton:hover {
+            background-color: #333;
+        }
+
+        .volver-enlace {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .volver-enlace:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enviar Película</h2>
+
+   
+    <div class="movie-item">
+        <img th:src="${pelicula.Poster}" alt="Poster de la película" class="movie-poster" />
+        <div class="movie-info">
+            <p class="movie-title" th:text="${pelicula.Title}"></p>
+            <p class="movie-year" th:text="${pelicula.Year}"></p>
+            <p class="movie-director" th:text="${pelicula.Director}"></p>
+        </div>
+    </div>
+
+   
+    <div class="user-list">
+        <h3>Selecciona un usuario para enviar la película</h3>
+        <table>
+            <tr>
+                <th>Email</th>
+                <th>Acción</th>
+            </tr>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.email}"></td>
+                <td>
+                    <form th:action="@{/enviarPeliculas/{id}/{email}(id=${pelicula.id}, email=${usuario.email})}" method="post">
+                        <button type="submit" class="boton">Enviar</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <a href="#" th:href="@{/buscar}" class="volver-enlace">Volver a la página principal</a>
+</body>
+</html>
+
+

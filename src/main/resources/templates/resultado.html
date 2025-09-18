@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de Búsqueda</title>
+	<style>
+		body {
+		            font-family: Arial, sans-serif;
+		            background-color: #f4f4f4;
+		            margin: 0;
+		            padding: 0;
+		            box-sizing: border-box;
+		        }
+
+		        h1 {
+		            text-align: center;
+		            margin-top: 20px;
+		            font-size: 2em;
+		            color: #333;
+		        }
+
+		       
+		        .no-results-message {
+		            text-align: center;
+		            font-size: 1.2em;
+		            color: #888;
+		        }
+
+		       
+		        .movie-list {
+		            display: flex;
+		            flex-wrap: wrap;
+		            justify-content: space-around;
+		            gap: 20px;
+		            padding: 20px;
+		        }
+
+		        .movie-item {
+		            background-color: #fff;
+		            border-radius: 10px;
+		            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		            width: 250px;
+		            overflow: hidden;
+		            text-align: center;
+		            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+		        }
+
+		        .movie-item:hover {
+		            transform: scale(1.05);
+		            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		        }
+
+		        .movie-poster {
+		            width: 100%;
+		            height: 350px;
+		            object-fit: cover;
+		        }
+
+		        .movie-info {
+		            padding: 15px;
+		        }
+
+		        .movie-title {
+		            font-size: 1.2em;
+		            font-weight: bold;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+
+		        .movie-year {
+		            font-size: 1em;
+		            color: #777;
+		            margin-bottom: 5px;
+		        }
+
+		        .movie-director {
+		            font-size: 0.9em;
+		            color: #555;
+		        }
+
+		        
+		        .volver-enlace {
+		            display: block;
+		            text-align: center;
+		            margin-top: 30px;
+		            font-size: 1.2em;
+		            color: #007BFF;
+		            text-decoration: none;
+		        }
+
+		        .volver-enlace:hover {
+		            text-decoration: underline;
+		        }
+				.boton {
+					background-color: black;
+					color: #f4f4f4;
+					
+				}
+	</style>
+</head>
+<body>
+	<h1>Resultados de la Búsqueda</h1>
+	
+	<h1><div th:insert="~{fragmento :: saludo}" class="saludo"></div></h1>
+
+	   
+	    <div th:if="${mensaje}" class="no-results-message">
+	        <p th:text="${mensaje}"></p>
+	    </div>
+
+	   
+	    <div th:if="${peliculas != null}">
+	        <div class="movie-list">
+	            <div th:each="pelicula : ${peliculas}" class="movie-item">
+	                <img th:src="${pelicula.Poster}" alt="Poster de la película" class="movie-poster" />
+	                <div class="movie-info">
+	                    <p class="movie-title" th:text="${pelicula.Title}"></p>
+	                    <p class="movie-year" th:text="${pelicula.Year}"></p>
+	                    <p class="movie-director" th:text="${pelicula.Director}"></p>
+
+
+						<form th:action="@{/guardarPelicula}" method="post">
+						    <input type="hidden" th:name="title" th:value="${pelicula.Title}" />
+						    <input type="hidden" th:name="year" th:value="${pelicula.Year}" />
+						    <input type="hidden" th:name="director" th:value="${pelicula.Director}" />
+						    <input type="hidden" th:name="imdbID" th:value="${pelicula.imdbID}" />
+						    <input type="hidden" th:name="poster" th:value="${pelicula.Poster}" />
+						    
+							<label for="puntuacion">Puntuación</label>
+						 	<input type="number" id="puntuacion" name="puntuacion" min="1" max="5" required th:value="${pelicula.puntuacion}" />
+						    <button type="submit" class="boton">Guardar</button>
+						</form>
+
+						
+
+
+	                   
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+
+	   
+	    <a href="#" th:href="@{/buscar}" class="volver-enlace">Volver a buscar</a>
+</body>
+</html>

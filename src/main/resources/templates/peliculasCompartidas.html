@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Películas Compartidas</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Asegúrate de enlazar este CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+       
+        .peliculas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px; 
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .pelicula-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pelicula-container p {
+            margin: 10px 0;
+        }
+
+        strong {
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+        }
+
+        span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+		.saludo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+    </style>
+</head>
+<body>
+	<div th:insert="~{fragmento :: saludo}" class="saludo"></div>
+    <h2>Películas que te han compartido:</h2>
+    <div class="peliculas-grid">
+        <div th:each="pelicula : ${peliculasCompartidas}" class="pelicula-container">
+            <p>
+                <strong th:text="${pelicula.Title}"></strong> 
+                <br>
+                <span>Compartido por: <span th:text="${pelicula.usuario.email}"></span></span>
+                <br>
+				<form th:action="@{/Detalle/{imdbID}(imdbID=${pelicula.imdbID})}" method="get">
+				    <button type="submit">Ver Detalle</button>
+				</form>
+
+
+				
+            </p>
+        </div>
+    </div>
+	<a href="#" th:href="@{/buscar}" class="volver-enlace">Volver a buscar</a>
+</body>
+</html>

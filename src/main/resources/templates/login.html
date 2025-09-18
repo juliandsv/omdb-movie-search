@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login de mi app</title>
+</head>
+<meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Login</title>
+   <style>
+	* {
+	            margin: 0;
+	            padding: 0;
+	            box-sizing: border-box;
+	        }
+
+	        body {
+	            font-family: 'Arial', sans-serif;
+	            background-color: #f4f7fc;
+	            display: flex;
+	            justify-content: center;
+	            align-items: center;
+	            height: 100vh;
+	            margin: 0;
+	        }
+
+	        .login-container {
+	            background-color: #fff;
+	            padding: 30px;
+	            border-radius: 12px;
+	            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	            width: 100%;
+	            max-width: 400px;
+	            text-align: center;
+	        }
+
+	        .login-container h1 {
+	            margin-bottom: 25px;
+	            font-size: 24px;
+	            color: #333;
+	        }
+
+	        .login-container input {
+	            width: 100%;
+	            padding: 12px 15px;
+	            margin: 10px 0;
+	            border: 1px solid #ddd;
+	            border-radius: 8px;
+	            font-size: 16px;
+	            transition: border-color 0.3s ease;
+	        }
+
+	        .login-container input:focus {
+	            border-color: #4CAF50;
+	            outline: none;
+	        }
+
+	        .login-container button {
+	            width: 100%;
+	            padding: 12px;
+	            background-color: #4CAF50;
+	            color: white;
+	            border: none;
+	            border-radius: 8px;
+	            font-size: 16px;
+	            cursor: pointer;
+	            transition: background-color 0.3s ease;
+	        }
+
+	        .login-container button:hover {
+	            background-color: #45a049;
+	        }
+
+	        .login-container p {
+	            margin-top: 15px;
+	            font-size: 14px;
+	            color: #666;
+	        }
+
+	        .login-container p a {
+	            color: #007bff;
+	            text-decoration: none;
+	            font-weight: bold;
+	        }
+
+	        .login-container p a:hover {
+	            text-decoration: underline;
+	        }
+
+	        .error {
+	            color: red;
+	            font-size: 14px;
+	            margin-top: 10px;
+	        }
+      
+   </style>
+<body>
+	<div class="login-container">
+	        <h1>Iniciar sesión</h1>
+
+	        <form  th:action="@{/login}" method="POST">
+	            <input type="text" name="username" placeholder="Correo electrónico" required><br>
+	            <input type="password" name="password" placeholder="Contraseña"	pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+				              title="La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial"  required><br>
+	            <button type="submit">Iniciar sesión</button>
+	        </form>
+
+	        
+			
+
+	        <p>No tienes cuenta? <a href="/registro">Regístrate aquí</a></p>
+	    </div>
+
+</body>
+</html>
