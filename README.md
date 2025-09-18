@@ -44,3 +44,21 @@ Incluye **Spring Security** para autenticación y control de acceso basado en ro
 ```bash
 mvn spring-boot:run
 ```
+---
+
+## 📸 Screenshots
+
+### Login
+![Login](docs/screenshots/login.png)
+
+### Search
+![Search](docs/screenshots/search.png)
+
+### Result
+![Result](docs/screenshots/result.png)
+
+### Details
+![Details](docs/screenshots/details.png)
+
+### Saved Movies
+![Saved](docs/screenshots/saved.png)
