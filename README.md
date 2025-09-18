@@ -1,15 +1,15 @@
-# OMDb Movie Search 🎬
+# OMDb Movie Search 
 
 Spring Boot web application that integrates the **OMDb API** to search, view and save movies.  
 Includes **Spring Security** for authentication and role-based access, persistence with **MySQL**, and a frontend built with **Thymeleaf**.
 
 ---
-## 🇪🇸 Descripción en Español
+## 🇪🇸 
 Aplicación web desarrollada en **Spring Boot** que consume la **API de OMDb** para buscar, visualizar y guardar películas.  
 Incluye **Spring Security** para autenticación y control de acceso basado en roles, persistencia con **MySQL** y una interfaz construida con **Thymeleaf**.  
 ---
 
-## ✨ Features
+## Features
 - 🔎 Search movies by title (OMDb API integration)  
 - 📖 View detailed info (plot, actors, year, poster…)  
 - 👤 User registration & login (Spring Security)  
@@ -20,7 +20,7 @@ Incluye **Spring Security** para autenticación y control de acceso basado en ro
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 - Java 17  
 - Spring Boot 3 (Web, Data JPA, Security)  
 - MySQL (persistence)  
@@ -29,7 +29,7 @@ Incluye **Spring Security** para autenticación y control de acceso basado en ro
 
 ---
 
-## ⚙️ Setup (local)
+##  Setup (local)
 1. Copy `src/main/resources/application-example.properties` → `src/main/resources/application.properties`.
 2. Add your OMDb API key:
    ```properties
@@ -40,13 +40,13 @@ Incluye **Spring Security** para autenticación y control de acceso basado en ro
 ---
 
 
-## ▶️ Run
+## Run
 ```bash
 mvn spring-boot:run
 ```
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### Login
 ![Login](docs/screenshots/login.png)
