@@ -1,4 +1,4 @@
-# OMDb Movie Search 
+# 🎬 OMDb Movie Search 
 
 **OMDb Movie Search** es una aplicación web desarrollada con **Spring Boot + MySQL** que integra la API de **OMDb** para buscar, visualizar y guardar películas.  
 Incluye **Spring Security** para autenticación y control de acceso basado en roles, persistencia en **MySQL** y una interfaz dinámica con **Thymeleaf**.  
