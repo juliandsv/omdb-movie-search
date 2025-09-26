@@ -1,26 +1,24 @@
 # OMDb Movie Search 
 
-Spring Boot web application that integrates the **OMDb API** to search, view and save movies.  
-Includes **Spring Security** for authentication and role-based access, persistence with **MySQL**, and a frontend built with **Thymeleaf**.
-
----
-## 🇪🇸 
-Aplicación web desarrollada en **Spring Boot** que consume la **API de OMDb** para buscar, visualizar y guardar películas.  
-Incluye **Spring Security** para autenticación y control de acceso basado en roles, persistencia con **MySQL** y una interfaz construida con **Thymeleaf**.  
----
-
-## Features
-- 🔎 Search movies by title (OMDb API integration)  
-- 📖 View detailed info (plot, actors, year, poster…)  
-- 👤 User registration & login (Spring Security)  
-- 🔒 Authentication and role-based access control  
-- 💾 Save movies to your personal list  
-- 🤝 Share movies with other registered users  
-- 🎨 Responsive UI with Thymeleaf templates  
+**OMDb Movie Search** es una aplicación web desarrollada con **Spring Boot + MySQL** que integra la API de **OMDb** para buscar, visualizar y guardar películas.  
+Incluye **Spring Security** para autenticación y control de acceso basado en roles, persistencia en **MySQL** y una interfaz dinámica con **Thymeleaf**.  
 
 ---
 
-## Tech Stack
+## ✨ Funcionalidades  
+
+* 🔎 **Buscar películas por título** (integración con la API de OMDb)  
+* 📖 **Ver detalles completos** (sinopsis, actores, año, póster, etc.)  
+* 👤 **Registro e inicio de sesión de usuarios** (Spring Security)  
+* 🔒 **Autenticación y control de acceso basado en roles**  
+* 💾 **Guardar películas en tu lista personal**  
+* 🤝 **Compartir películas con otros usuarios registrados**  
+* 🎨 **Interfaz responsive** con plantillas Thymeleaf  
+
+---
+
+## 🚀 Tecnologías utilizadas  
+
 - Java 17  
 - Spring Boot 3 (Web, Data JPA, Security)  
 - MySQL (persistence)  
@@ -29,7 +27,7 @@ Incluye **Spring Security** para autenticación y control de acceso basado en ro
 
 ---
 
-##  Setup (local)
+## ⚙️ Instalación y configuración  
 1. Copy `src/main/resources/application-example.properties` → `src/main/resources/application.properties`.
 2. Add your OMDb API key:
    ```properties
@@ -39,6 +37,15 @@ Incluye **Spring Security** para autenticación y control de acceso basado en ro
 
 ---
 
+## 🔒 Seguridad
+
+   -Formulario de login personalizado (/login)
+
+   -Control de acceso basado en roles de usuario
+
+   -Contraseñas encriptadas con BCrypt
+
+   -Autenticación por sesión
 
 ## Run
 ```bash
